@@ -13,6 +13,10 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { LoginGuardGuard } from '../services/service.index';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { SectorComponent } from './sector/sector.component';
+import { ProvinciasComponent } from './provincias/provincias.component';
+import { PacienteComponent } from './paciente/paciente.component';
+import { ArsComponent } from './ars/ars.component';
 
 
 const pagesRoutes: Routes = [
@@ -29,7 +33,11 @@ const pagesRoutes: Routes = [
             { path: 'account-settings', component: AccoutSettingsComponent, data: { titulo: 'Ajustes de Tema' } },
             { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
             { path: 'usuario', component: UsuarioComponent, data: { titulo: 'Usuario' } },
+            { path: 'sector', component: SectorComponent, data: { titulo: 'Sectores' } },
+            { path: 'provincia', component: ProvinciasComponent, data: { titulo: 'Provincia' } },
+            { path: 'ars', component: ArsComponent, data: { titulo: 'Ars' } },
 
+            { path: 'paciente', component: PacienteComponent, data: { titulo: 'Paciente' } },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]
     }

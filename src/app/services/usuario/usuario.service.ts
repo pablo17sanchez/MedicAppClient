@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { map } from 'rxjs-compat/operator/map';
 import { UsuarioCreate } from '../../models/usuarioCreate.model';
+import { UsuarioActualizar } from '../../models/usuarioActualizar.modelt';
 
 
 @Injectable()
@@ -103,7 +104,7 @@ export class UsuarioService {
   crearUsuario(usuario: UsuarioCreate) {
 
     let url = URL_SERVICIOS + '/usuario';
-    console.log(url);
+
     return this.http.post(url, usuario)
       .map((resp: any) => {
 
@@ -111,19 +112,16 @@ export class UsuarioService {
       });
   }
 
-  actualizarUsuario(usuario: UsuarioCreate) {
+  actualizarUsuario(usuario: UsuarioActualizar) {
 
-    let url = URL_SERVICIOS + '/usuario/'; // + usuario._id;
-    url += '?token=' + this.token;
+    let url = URL_SERVICIOS + '/usuario'; // + usuario._id;
+    // url += '?token=' + this.token;
 
     return this.http.put(url, usuario)
       .map((resp: any) => {
 
-        // this.usuario = resp.usuario;
-        let usuarioDB: Usuario = resp.usuario;
+        //  let usuarioDB: Usuario = resp.usuario;
 
-        // this.guardarStorage( usuarioDB._id, this.token, usuarioDB );
-        // swal('Usuario actualizado', usuario.nombre, 'success' );
 
         return true;
       });

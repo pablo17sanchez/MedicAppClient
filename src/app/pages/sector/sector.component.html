@@ -1,0 +1,112 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <!-- <input #input (keyup)="buscarUsuario( input.value )" type="text" class="form-control"
+          placeholder="Buscar usuario..."> -->
+
+        <input #input type="text" class="form-control" placeholder="Buscar sector...">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+
+  <div class="col-sm-12">
+
+    <div class="alert alert-warning text-center">
+      <strong>Cargando</strong>
+      <br>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <h3 class="card-title">Secotres registrados ( <small>{{ totalRegistros }}</small> )</h3>
+        <button class="btn btn-outline-success pull-right" (click)="AddUsuario()" AddUsuario type="button">Crear
+          sector</button>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Sector id</th>
+              <th>Nombre de sector</th>
+              <th>Codigo Postal de sector</th>
+
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let sector of sectores">
+
+              <td>
+                {{ sector.sectorId }}
+              </td>
+              <td>
+                {{ sector.nombre }}
+              </td>
+              <td>
+                {{ sector.codigoPostal }}
+              </td>
+
+
+              <td>
+                <button class="btn btn-primary">
+                  <i class="fa fa-edit" (click)="EditSector(sector)"></i>
+                </button>
+
+
+                <button class="btn btn-danger" (click)="DesabilitarOhavilitarUsuario(sector)" >
+                  <i class="fa fa-trash"></i>
+                </button>
+
+
+                <!-- <button  *ngIf="usuario.status"  (click)="DesabilitarOhavilitarUsuario(usuario)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+                <button  *ngIf="!usuario.status" (click)="DesabilitarOhavilitarUsuario(usuario)" class="btn btn-success">
+                  <i class="fa fa-check"></i>
+                </button> -->
+
+
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <button (click)="cambiarDesde(-5)" class="btn btn-secondary">
+          Anteriores
+        </button>
+
+        <!-- <button  class="btn btn-secondary">
+                Anteriores
+              </button> -->
+
+        <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+          Siguientes
+        </button>
+
+        <!-- <button class="btn btn-secondary">
+                Siguientes
+            </button> -->
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

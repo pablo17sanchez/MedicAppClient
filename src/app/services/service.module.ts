@@ -1,6 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SectorService } from './sector/sector.service';
+import { PacienteService } from './paciente/paciente.service';
+import { ArsService } from './ars/ars.service';
 
 import {
   SettingsService,
@@ -23,7 +26,10 @@ import {
     SharedService,
     UsuarioService,
     LoginGuardGuard,
-    SubirArchivoService
+    SubirArchivoService,
+    SectorService,
+    PacienteService,
+    ArsService
   ],
   declarations: []
 })

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Usuario } from '../../../models/usuario.model';
 
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsuarioService } from '../../../services/usuario/usuario.service';
 import { UsuarioCreate } from '../../../models/usuarioCreate.model';
+import { UsuarioActualizar } from '../../../models/usuarioActualizar.modelt';
 
 
 @Component({
@@ -15,20 +16,27 @@ import { UsuarioCreate } from '../../../models/usuarioCreate.model';
 export class ActualizarUsuarioComponent implements OnInit {
   formData: Usuario;
   public forma: FormGroup;
-  constructor(public dialogRef: MatDialogRef<ActualizarUsuarioComponent>,
+  constructor(@Inject(MAT_DIALOG_DATA) public data,
+    public dialogRef: MatDialogRef<ActualizarUsuarioComponent>,
     public _usuarioS: UsuarioService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
-    this.forma = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      nombre: new FormControl(null, Validators.required),
-      apellido: new FormControl(null, Validators.required),
-      correo: new FormControl(),
-      password: new FormControl(null, Validators.required),
-      password2: new FormControl(null, Validators.required),
-      rol: new FormControl()
-    }, { validators: this.sonIguales('password', 'password2') });
+
+
+    this.formData = {
+      userName: this.data.usuarios.userName,
+      usuarioId: this.data.usuarios.usuarioId,
+      nombre: this.data.usuarios.nombre,
+      apellido: this.data.usuarios.apellido,
+      correo: this.data.usuarios.correo,
+      sandForPassword: this.data.usuarios.sandForPassword,
+      rol: this.data.usuarios.rol,
+      status: this.data.usuarios.status,
+      password: this.data.usuarios.password,
+      totalRecords: this.data.usuarios.totalRecords
+
+    };
   }
 
 
@@ -55,21 +63,20 @@ export class ActualizarUsuarioComponent implements OnInit {
   }
 
   OnSumit(form: NgForm) {
-    if (this.forma.invalid) {
-      return;
 
-    }
-    let usuario = new UsuarioCreate(this.forma.value.nombre,
-      this.forma.value.apellido, true,
-      this.forma.value.correo,
-      this.forma.value.username,
-      this.forma.value.password,
-      this.forma.value.rol);
+    let usuario = new UsuarioActualizar(
+      this.formData.nombre,
+      this.formData.apellido, true,
+      this.formData.correo,
+      this.formData.userName,
+      this.formData.password,
+      this.formData.rol,
+      this.formData.usuarioId);
 
 
     // console.log(usuario);
-    this._usuarioS.crearUsuario(usuario).subscribe((data: any) => {
-      console.log(data);
+    this._usuarioS.actualizarUsuario(usuario).subscribe((data: any) => {
+      // console.log(data);
       this.closeDialogCrearUsuario();
 
 

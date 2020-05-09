@@ -4,6 +4,7 @@ import { Usuario } from '../../models/usuario.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { ActualizarUsuarioComponent } from './actualizar-usuario/actualizar-usuario.component';
+import { ElminarusuarioComponent } from './elminarusuario/elminarusuario.component';
 
 @Component({
   selector: 'app-usuario',
@@ -55,6 +56,7 @@ export class UsuarioComponent implements OnInit {
     dialogConfig.width = '50%';
     this.dialog.open(CrearUsuarioComponent, dialogConfig).afterClosed().subscribe(res => {
       //this.updateGrandTotal();
+      this.cargarUsuarios();
     });
 
 
@@ -62,17 +64,41 @@ export class UsuarioComponent implements OnInit {
   }
 
 
-  EditUsuario() {
+  EditUsuario(usuarios: Usuario) {
+     const dialogConfig = new MatDialogConfig();
+      dialogConfig.autoFocus = true;
+      dialogConfig.disableClose = true;
+      dialogConfig.width = '50%';
+      dialogConfig.data = { usuarios };
+
+      this.dialog.open(ActualizarUsuarioComponent, dialogConfig).afterClosed().subscribe(res => {
+        this.cargarUsuarios();
+      });
+
+    // console.log(usuarios);
+
+
+
+  }
+
+
+
+
+  DesabilitarOhavilitarUsuario(usuarios: Usuario) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
-    dialogConfig.width = '50%';
-    this.dialog.open(ActualizarUsuarioComponent, dialogConfig).afterClosed().subscribe(res => {
-    });
+     dialogConfig.autoFocus = true;
+     dialogConfig.disableClose = true;
+     dialogConfig.width = '50%';
+     dialogConfig.data = { usuarios };
+
+     this.dialog.open(ElminarusuarioComponent, dialogConfig).afterClosed().subscribe(res => {
+       this.cargarUsuarios();
+     });
 
 
 
-  }
+
+ }
   cargarUsuarios() {
 
     this.cargando = true;

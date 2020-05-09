@@ -1,0 +1,171 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <!-- <input #input (keyup)="buscarUsuario( input.value )" type="text" class="form-control"
+          placeholder="Buscar usuario..."> -->
+
+        <input #input type="text" class="form-control" placeholder="Buscar paciente...">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+
+  <div class="col-sm-12">
+
+    <div class="alert alert-warning text-center">
+      <strong>Cargando</strong>
+      <br>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <h3 class="card-title">Provincia registradas ( <small>{{ totalRegistros }}</small> )</h3>
+        <button class="btn btn-outline-success pull-right" (click)="AddProvincia()" AddUsuario type="button">Crear
+          Paciente</button>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Cedula</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Fecha de nacimiento</th>
+              <th>Provincia</th>
+              <th>Sector</th>
+              <th>ArsId</th>
+              <th>Tipo de sangre</th>
+              <th>Genero</th>
+              <th>Alergico</th>
+              <th>Ocupacion</th>
+              <th>Peso</th>
+              <th>Fuma</th>
+              <th>Bebe</th>
+               <th>Numero de afiliado</th>
+               <th>Acciones   </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let pacient of paciente">
+              <!-- <td class="w70">
+                              <img (click)="mostrarModal( usuario._id )" [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                          </td> -->
+
+              <td>
+                {{ pacient.nombre }}
+              </td>
+              <td>
+                {{ pacient.apellido }}
+              </td>
+              <td>
+                {{ pacient.cedula }}
+              </td>
+              <td>
+                {{ pacient.direccion }}
+              </td>
+              <td>
+                {{ pacient.telefono }}
+              </td>
+              <td>
+                {{ pacient.fnacimiento }}
+              </td>
+              <td>
+                {{ pacient.provinciaId }}
+              </td>
+              <td>
+                {{ pacient.sectorId }}
+              </td>
+              <td>
+                {{ pacient.arsid }}
+              </td>
+              <td>
+                {{ pacient.tipoSangre }}
+              </td>
+              <td>
+                {{ pacient.genero }}
+              </td>
+              <td>
+                {{ pacient.alergico }}
+              </td>
+              <td>
+                {{ pacient.ocupacion }}
+              </td>
+              <td>
+                {{ pacient.peso }}
+              </td>
+              <td>
+                {{ pacient.fuma }}
+              </td>
+              <td>
+                {{ pacient.bebe }}
+              </td>
+              <td>
+                {{ pacient.noAfiliadoARS }}
+              </td>
+
+
+              <td>
+                <span class="row">
+                <button class="btn btn-primary">
+                  <i class="fa fa-edit" (click)="EditProvincia(provi)"></i>
+                </button>
+
+
+                <button class="btn btn-danger" (click)="DesabilitarOhavilitarUsuario(sector)" >
+                  <i class="fa fa-trash"></i>
+                </button>
+
+              </span>
+                <!-- <button  *ngIf="usuario.status"  (click)="DesabilitarOhavilitarUsuario(usuario)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+                <button  *ngIf="!usuario.status" (click)="DesabilitarOhavilitarUsuario(usuario)" class="btn btn-success">
+                  <i class="fa fa-check"></i>
+                </button> -->
+
+
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+        <button (click)="cambiarDesde(-5)" class="btn btn-secondary">
+          Anteriores
+        </button>
+
+        <!-- <button  class="btn btn-secondary">
+                Anteriores
+              </button> -->
+
+        <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+          Siguientes
+        </button>
+
+        <!-- <button class="btn btn-secondary">
+                Siguientes
+            </button> -->
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

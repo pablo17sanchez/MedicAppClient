@@ -1,0 +1,9 @@
+<h2 *ngIf="esHabilitar" >Esta seguro que desea habilitar?</h2>
+<h2 *ngIf="!esHabilitar">Esta seguro que desea Desabilitar?</h2>
+<hr>
+
+<button *ngIf="esHabilitar" (click)="HabilitarOdeabilitar()"  type="button" class="btn btn-outline-success"> Habilitar</button>
+<button *ngIf="!esHabilitar" (click)="HabilitarOdeabilitar()"  type="button" class="btn btn-outline-danger"> Desabilitar</button>
+<button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Cerrar</button>
+
+

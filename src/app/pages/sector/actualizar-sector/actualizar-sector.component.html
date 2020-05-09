@@ -1,0 +1,22 @@
+<form  #form="ngForm" (ngSubmit)="OnSumit(form)" >
+  <div class="form-group">
+    <label for="inputAddress">Nombre de sector</label>
+    <input type="text" class="form-control" id="nombre" name="nombre"  [(ngModel)]="formData.nombre" >
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Codigo postal</label>
+    <input type="text" class="form-control" id="codigopostal" name="codigopostal"  [(ngModel)]="formData.codigoPostal" >
+  </div>
+
+
+
+
+
+
+  <div class="form-group">
+
+
+  <button type="submit"  class="btn btn-primary">Editar</button>
+  <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Cerrar</button>
+</div>
+</form>

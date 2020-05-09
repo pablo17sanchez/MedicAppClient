@@ -31,6 +31,24 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { CrearUsuarioComponent } from './usuario/crear-usuario/crear-usuario.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ActualizarUsuarioComponent } from './usuario/actualizar-usuario/actualizar-usuario.component';
+import { ElminarusuarioComponent } from './usuario/elminarusuario/elminarusuario.component';
+import { SectorComponent } from './sector/sector.component';
+import { CrearSectorComponent } from './sector/crear-sector/crear-sector.component';
+import { ActualizarSectorComponent } from './sector/actualizar-sector/actualizar-sector.component';
+import { EliminarSectorComponent } from './sector/eliminar-sector/eliminar-sector.component';
+import { ProvinciasComponent } from './provincias/provincias.component';
+import { CrearProvinciaComponent } from './provincias/crear-provincia/crear-provincia.component';
+import { ActualizarProvinciaComponent } from './provincias/actualizar-provincia/actualizar-provincia.component';
+import { EliminarComponent } from './provincias/eliminar/eliminar.component';
+import { PacienteComponent } from './paciente/paciente.component';
+import { CrearPacienteComponent } from './paciente/crear-paciente/crear-paciente.component';
+import { ActualizarPacienteComponent } from './paciente/actualizar-paciente/actualizar-paciente.component';
+import { ElimiarPacienteComponent } from './paciente/elimiar-paciente/elimiar-paciente.component';
+import { ArsComponent } from './ars/ars.component';
+import { CrearArsComponent } from './ars/crear-ars/crear-ars.component';
+import { EliminarArsComponent } from './ars/eliminar-ars/eliminar-ars.component';
+import { ActualizarArsComponent } from './ars/actualizar-ars/actualizar-ars.component';
+
 
 @NgModule({
     declarations: [
@@ -46,7 +64,24 @@ import { ActualizarUsuarioComponent } from './usuario/actualizar-usuario/actuali
         ProfileComponent,
         UsuarioComponent,
         CrearUsuarioComponent,
-        ActualizarUsuarioComponent
+        ActualizarUsuarioComponent,
+        ElminarusuarioComponent,
+        SectorComponent,
+        CrearSectorComponent,
+        ActualizarSectorComponent,
+        EliminarSectorComponent,
+        ProvinciasComponent,
+        CrearProvinciaComponent,
+        ActualizarProvinciaComponent,
+        EliminarComponent,
+        PacienteComponent,
+        CrearPacienteComponent,
+        ActualizarPacienteComponent,
+        ElimiarPacienteComponent,
+        ArsComponent,
+        CrearArsComponent,
+        EliminarArsComponent,
+        ActualizarArsComponent
     ],
     exports: [
         DashboardComponent,
